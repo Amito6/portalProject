@@ -61,6 +61,5 @@ menuItems.forEach((item)=>{
 window.onhashchange = ()=>{
     handleRouteChange();
 }
-
-handleRouteChange();
+//handleRouteChange();
 /* load the initial Route */

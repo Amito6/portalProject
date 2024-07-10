@@ -1,5 +1,5 @@
 const courses = `
-     <div class="grid md:grid-cols-5 gap-5">
+    /*  <div class="grid md:grid-cols-5 gap-3">
                 <div class="p-4 shadow-sm bg-white md:col-span-3">
                     <div class="flex justify-between items-center border-b py-2">
                         <h5 class="text-xl font-semibold">Courses-list</h5>
@@ -98,8 +98,8 @@ const courses = `
                         <i class="fa fa-plus"></i>
                     </button>
                     </div>
-                    <div class="mt-3">
-                        <table class="table table-striped table-responsive table-bordered text-center table-hover">
+                    <div class="table-responsive mt-3">
+                        <table class="table table-striped table-bordered text-center table-hover">
                             <thead class="text-nowrap text-centered">
                                 <tr>
                                     <th>Sr.</th>
@@ -239,7 +239,7 @@ const courses = `
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> */
 `;
 
 export default courses;
