@@ -1,5 +1,5 @@
 const courses = `
-    /*  <div class="grid md:grid-cols-5 gap-3">
+     <div class="animate__animated animate__zoomIn grid grid-cols-1 md:grid-cols-5 gap-5">
                 <div class="p-4 shadow-sm bg-white md:col-span-3">
                     <div class="flex justify-between items-center border-b py-2">
                         <h5 class="text-xl font-semibold">Courses-list</h5>
@@ -22,7 +22,7 @@ const courses = `
                                     <th>Action</th>
                                 </tr>
                             </thead>
-                            <tbody>
+                            <tbody class="text-nowrap">
                                 <tr>
                                     <td>1</td>
                                     <td>
@@ -98,8 +98,8 @@ const courses = `
                         <i class="fa fa-plus"></i>
                     </button>
                     </div>
-                    <div class="table-responsive mt-3">
-                        <table class="table table-striped table-bordered text-center table-hover">
+                    <div class="mt-3 table-responsive">
+                        <table class="table table-striped  table-bordered text-center table-hover">
                             <thead class="text-nowrap text-centered">
                                 <tr>
                                     <th>Sr.</th>
@@ -108,7 +108,7 @@ const courses = `
                                     <th>Action</th>
                                 </tr>
                             </thead>
-                            <tbody>
+                            <tbody class="text-nowrap">
                                 <tr>
                                     <td>1</td>
                                     <td>Fron-End</td>
@@ -152,6 +152,9 @@ const courses = `
                 </div>
                
             </div>
+
+
+            <!-- Course-Modal -->
             <div class=" animate__animated animate__zoomIn modal" id="course-modal">
                 <div class="modal-dialog modal-dialog-centered">
                     <div class="modal-content">
@@ -210,6 +213,8 @@ const courses = `
                     </div>
                 </div>
             </div>
+
+            <!-- Category-Modal -->
             <div class=" animate__animated animate__zoomIn modal" id="category-modal">
                 <div class="modal-dialog modal-dialog-centered">
                     <div class="modal-content">
@@ -239,7 +244,7 @@ const courses = `
                         </div>
                     </div>
                 </div>
-            </div> */
+            </div>
 `;
 
 export default courses;
