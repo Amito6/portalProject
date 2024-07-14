@@ -17,7 +17,7 @@ togglerBtn.addEventListener("click",()=>{
 import dashboard from "../pages/dashboard.js";
 import courses from "../pages/courses.js";
 import settings from "../pages/settings.js";
-import students from "../pages/students.js";
+import users from "../pages/users.js";
 import notFound from "../pages/not-found.js";
 import { dashboardFunc } from "../pages/js/dashboard.js";
 
@@ -27,7 +27,7 @@ import { dashboardFunc } from "../pages/js/dashboard.js";
 const routes = {
     "/" : dashboard,
     "/courses" : courses,
-    "/students" : students,
+    "/users" : users,
     "/settings" : settings
 }
 

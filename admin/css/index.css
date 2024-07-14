@@ -95,5 +95,8 @@
     color: white;
     background-color: #a35750;
 }
+.dropdown-menu{
+    min-width: 10px !important;
+}
 
 /* end 404 page coding */
