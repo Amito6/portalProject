@@ -85,7 +85,6 @@ var options = {
 export const dashboardFunc = () =>{
     let areaChart = document.querySelector(".area-chart");
     let areaColoumnChart = document.querySelector(".area-column-chart");
-    console.log(areaColoumnChart)
     var chart = new ApexCharts(areaChart, options);
     chart.render();
     var chartColumn = new ApexCharts(areaColoumnChart,optionsColumnChart);

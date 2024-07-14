@@ -20,6 +20,7 @@ import settings from "../pages/settings.js";
 import users from "../pages/users.js";
 import notFound from "../pages/not-found.js";
 import { dashboardFunc } from "../pages/js/dashboard.js";
+import { userFunc } from "../pages/js/users.js";
 
 /* import route from pages/js */
 
@@ -41,6 +42,9 @@ const handleRouteChange = () =>{
     page.innerHTML = routes[path] || notFound;
     if(path=="/"){
         dashboardFunc();
+    }
+    else if(path=="/users"){
+        userFunc();
     }
 }
 

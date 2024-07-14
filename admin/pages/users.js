@@ -5,7 +5,7 @@ const users = `
                 <div class="p-4 bg-white shadow-sm">
                     <div class="flex justify-between items-center border-b py-3">
                         <div class="flex justify-center items-center gap-3">
-                                <img src="../assets/images/istockphoto-1.jpg" class="rounded-full w-11 h-11" alt="image">
+                                <img src="../../assets/images/istockphoto-1.jpg" class="rounded-full w-11 h-11" alt="image">
                                 <div>
                                     <h5 class="font-semibold">Amit</h5>
                                     <p class="text-sm text-gray-500"><i class="fa fa-location"></i>Canada</p>
@@ -491,8 +491,8 @@ const users = `
                                 <div class="row mb-3">
                                     <div class="col-12">
                                         <div class="form-group">
-                                            <label for="courses">Select Course <sup class="text-red-500">*</sup></label>
-                                            <select class="form-select" name="courses" id="courses" multiple>
+                                            <label for="course">Select Course <sup class="text-red-500">*</sup></label>
+                                            <select class="form-select" name="course" id="course" multiple>
                                                 <option value="selectcourses">Select Courses</option>
                                                 <option value="Nodjs">Nodejs</option>
                                                 <option value="Reactjs">Reactjs</option>
