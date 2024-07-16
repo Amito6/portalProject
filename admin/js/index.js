@@ -21,6 +21,7 @@ import users from "../pages/users.js";
 import notFound from "../pages/not-found.js";
 import { dashboardFunc } from "../pages/js/dashboard.js";
 import { userFunc } from "../pages/js/users.js";
+import { categoryFunc,courseFunc } from "../pages/js/courses.js";
 
 /* import route from pages/js */
 
@@ -45,6 +46,11 @@ const handleRouteChange = () =>{
     }
     else if(path=="/users"){
         userFunc();
+    }
+    else if(path=="/courses"){
+        categoryFunc();
+        courseFunc();
+
     }
 }
 

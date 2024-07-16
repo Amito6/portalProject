@@ -1,6 +1,7 @@
 const courses = `
-     <div class="courses">
+    <div class="courses">
         <div class="animate__animated animate__zoomIn grid grid-cols-1 md:grid-cols-5 gap-5">
+            <!-- Courses list block coding -->
                     <div class="p-4 shadow-sm bg-white md:col-span-3">
                         <div class="flex justify-between items-center border-b py-2">
                             <h5 class="text-xl font-semibold">Courses-list</h5>
@@ -23,27 +24,14 @@ const courses = `
                                         <th>Action</th>
                                     </tr>
                                 </thead>
-                                <tbody class="text-nowrap">
-                                    <tr>
-                                        <td>1</td>
-                                        <td>
-                                            <img src="../assets/images/hotelLogo.jpg" width="40px" alt="Thumbnail">
-                                        </td>
-                                        <td>Fron-End</td>
-                                        <td>Nodejs</td>
-                                        <td><a href="#">Link</a></td>
-                                        <td>$2500</td>
-                                        <td>4 months</td>
-                                        <td>23-March-2024</td>
-                                        <td>
-                                            <button class="btn text-blue-500"><i class="fa fa-edit"></i></button>
-                                            <button class="btn text-red-500"><i class="fa fa-trash"></i></button>
-                                        </td>
-                                    </tr>
+                                <tbody class="text-nowrap course-list">
+                                    
                                 </tbody>
                             </table>
                         </div>
                     </div>
+
+                    <!-- Category list coding -->
                     <div class="p-4 shadow-sm bg-white md:col-span-2">
                         <div class="flex justify-between items-center border-b py-2">
                             <h5 class="text-xl font-semibold">Category-list</h5>
@@ -61,18 +49,8 @@ const courses = `
                                         <th>Action</th>
                                     </tr>
                                 </thead>
-                                <tbody class="text-nowrap">
-                                    <tr>
-                                        <td>1</td>
-                                        <td>Fron-End</td>
-                                        <td>23-March-2024</td>
-                                        <td>
-                                            <button class="btn text-blue-500"><i class="fa fa-edit"></i></button>
-                                            <button class="btn text-red-500"><i class="fa fa-trash"></i></button>
-                                        </td>
-                                    </tr>
-                                
-                                
+                                <tbody class="text-nowrap category-list">
+                               
                                 </tbody>
                             </table>
                         </div>
@@ -83,7 +61,7 @@ const courses = `
 
                 <!-- Course-Modal -->
                 <div class=" animate__animated animate__zoomIn modal" id="course-modal">
-                    <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-dialog modal-dialog-centered modal-lg">
                         <div class="modal-content">
                             <div class="modal-header">
                                 <h5 class="font-semibold text-xl">Create new Course</h5>
@@ -92,49 +70,84 @@ const courses = `
                             </div>
                             <div class="modal-body">
                                 <form class="course-form">
-                                    <div class="form-group mb-3">
-                                        <label for="thumb">Thumbnail</label>
-                                        <input class="form-control" id="thumb" type="file">
+                                    <!-- Course modal form -->
+                                        <div class="row mb-3">
+                                        <div class="col-6">
+                                            <div class="form-group">
+                                                <label for="thumb">Thumbnail</label>
+                                                <input name="thumbnail" class="form-control" id="thumb" name="thumbnail" type="file">
+                                            </div>
+                                        </div>
+                                        <div class="col-6">
+                                            <div class="form-group mb-3">
+                                                <label for="courseName">Course Name</label>
+                                                <input name="course-name" class="form-control" id="courseName" type="text">
+                                            </div>
+                                        </div>
+                                        </div>
+
+                                        <div class="row mb-3">
+                                        <div class="col-6">
+                                            <div class="form-group">
+                                                <select class="form-select course-category" name="category">
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-6">
+                                            <div class="form-group">
+                                                <select class="form-select" name="duration">
+                                                    <option value="choose-duration">Choose Duration</option>
+                                                    <option value="4-month">4-Month</option>
+                                                    <option value="2-month">2-month</option>
+                                                    <option value="6-month">6-month</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        </div>
+
+
+                                        <div class="row mb-3">
+                                        <div class="col-6">
+                                            <div class="form-group">
+                                                <label for="courseLink">Course Link</label>
+                                                <input class="form-control" id="courseLink" type="url" name="course-link">
+                                            </div>
+                                        </div>
+                                        <div class="col-6">
+                                            <div class="form-group">
+                                                <label for="coursePrice">Course Price</label>
+                                                <input class="form-control" id="coursePrice" type="number" name="course-price">
+                                            </div>
+                                        </div>
+                                        </div>
+
+                                        <div class="mb-3 form-group">
+                                        <label for="desc">Course Description</label>
+                                        <textarea name="course-desc" id="desc" class="form-control"></textarea>
+                                        </div>
+
+                                    <div class="row mb-3">   
+                                        <div class="col-12 flex gap-3">
+                                            <div class="form-group">
+                                            <input type="checkbox" name="live" id="live">
+                                            <label for="live">is Live </label>
+                                            </div>
+                                            <div class="form-group">
+                                            <input type="checkbox" name="free" id="free">
+                                            <label for="free">is Free</label>
+                                            </div>
+                                        </div>
                                     </div>
-                                    <div class="form-group mb-3">
-                                        <select class="form-select mb-3">
-                                            <option     value="choose-category">Choose Category</option>
-                                            <option value="front-end">Front-End</option>
-                                            <option value="chosse category">Choose Category</option>
-                                        </select>
-                                        <div class="form-group mb-3">
-                                            <label for="courseName">Course Name</label>
-                                            <input class="form-control" id="courseName" type="text">
-                                        </div>
-                                        <div class="form-group mb-3">
-                                            <label for="courseLink">Course Link</label>
-                                            <input class="form-control" id="courseLink" type="url">
-                                        </div>
-                                        <div class="form-group mb-3">
-                                            <label for="coursePrice">Course Price</label>
-                                            <input class="form-control" id="coursePrice" type="number">
-                                        </div>
-                                        <div class="form-group mb-3">
-                                            <select class="form-select mb-3">
-                                                <option     value="choose-duration">Choose Duration</option>
-                                                <option value="4-month">4-Month</option>
-                                                <option value="2-month">2-month</option>
-                                                <option value="6-month">6-month</option>
-                                            </select>
-                                        </div>
-                                        <div class="form-group mb-3">
-                                            <label for="desc">Course Price</label>
-                                            <textarea name="" id="desc" class="form-control"></textarea>
-                                        </div>
-                                        <div class="form-group mb-3">
-                                            <button class="w-full btn bg-blue-600 text-white font-semibold">
-                                                Submit
-                                            </button>
-                                            <button class="w-full btn bg-red-400 text-white font-semibold d-none">
-                                                Update
-                                            </button>
-                                        </div>
+
+                                    <div class="form-group">
+                                        <button class="w-full btn bg-blue-600 text-white font-semibold">
+                                            Submit
+                                        </button>
+                                        <button class="w-full btn bg-red-400 text-white font-semibold d-none">
+                                            Update
+                                        </button>
                                     </div>
+                                    
                                 </form>
                             </div>
                         </div>
@@ -151,13 +164,11 @@ const courses = `
                                 aria-label="Close"></button>
                             </div>
                             <div class="modal-body">
-                                <form class="course-form">
+                                <form class="category-form">
                                     <div class="form-group mb-3">
-                                        <select class="form-select mb-3">
-                                            <option     value="choose-category">Choose Category</option>
-                                            <option value="front-end">Front-End</option>
-                                            <option value="chosse category">Choose Category</option>
-                                        </select>
+                                            <label for="courseName">Category</label>
+                                                <input name="category" class="form-control" id="category" type="text">
+                                    </div>
                                         <div class="form-group mb-3">
                                             <button class="w-full btn bg-blue-600 text-white font-semibold">
                                                 Submit
@@ -166,13 +177,14 @@ const courses = `
                                                 Update
                                             </button>
                                         </div>
-                                    </div>
+                                    
                                 </form>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
+
 `;
 
 export default courses;
