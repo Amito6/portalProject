@@ -1,5 +1,5 @@
 const users = `
-          <div class="users">
+             <div class="users">
                 <!-- Page content -->
                 <div class="animate__animated animate__zoomIn user-list grid md:grid-cols-3 gap-4">
                     <!-- 1st div -->
@@ -9,7 +9,7 @@ const users = `
 
 
                 <!-- Modal Toggle button -->
-                <button data-bs-toggle="modal" data-bs-target="#user-modal" class="position-fixed bottom-0 right-0 m-16 btn bg-red-500 text-white w-11 h-11 rounded-full shadow-sm">
+                <button data-bs-toggle="modal" data-bs-target="#user-modal" class=" add-user-btn position-fixed bottom-0 right-0 m-16 btn bg-red-500 text-white w-11 h-11 rounded-full shadow-sm">
                     <i class="fa fa-add"></i>
                 </button>
 
@@ -30,6 +30,8 @@ const users = `
                                 <!-- Form Coding -->
 
                                 <form class="users-form">
+
+                                    <!-- 1st row -->
                                     <div class="row mb-3">
                                         <div class="col-12">
                                             <div class="form-group">
@@ -39,12 +41,12 @@ const users = `
                                         </div>
                                     </div>
 
-
+                                    <!-- 2nd row -->
                                     <div class="row mb-3">
                                         <div class="col-6">
                                             <div class="form-group">
                                                 <label for="name">Category Name <sup class="text-red-500">*</sup></label>
-                                                <input type="text" name="category-name" required class="form-control">
+                                                <input type="text" name="name" required class="form-control">
                                             </div>
                                         </div>
                                         <div class="col-6">
@@ -55,7 +57,7 @@ const users = `
                                         </div>
                                     </div>
 
-
+                                    <!-- 3rd-row -->
                                     <div class="row mb-3">
                                         <div class="col-6">
                                             <div class="form-group">
@@ -71,7 +73,7 @@ const users = `
                                         </div>
                                     </div>
 
-
+                                    <!-- 4th-row -->
                                     <div class="row mb-3">
                                         <div class="col-6">
                                             <div class="form-group">
@@ -93,30 +95,8 @@ const users = `
                                         </div>
                                     </div>
 
-                                    <div class="row mb-3">
-                                        <div class="col-6">
-                                            <div class="form-group">
-                                                <input type="checkbox" name="status">
-                                                <label for="father">Is Active</label>
-                                            </div>
-                                        </div>
-                                        <div class="col-6 flex gap-3">
-                                            <div class="form-group">
-                                                <input type="radio" name="type" value="admin">
-                                                <label>Admin</label>
-                                            </div>
-                                            <div class="form-group">
-                                                <input type="radio" name="type" value="teacher">
-                                                <label>Tecaher</label>
-                                            </div>
-                                            <div class="form-group">
-                                                <input type="radio" name="type" value="user">
-                                                <label>User</label>
-                                            </div>
-                                        </div>
-                                        
-                                    </div>
-
+                                   
+                                    <!-- 5th-row -->
                                     <div class="row mb-3">
                                         <div class="col-12">
                                             <div class="form-group">
@@ -131,6 +111,32 @@ const users = `
                                         </div>
                                     </div>
 
+                                    <!-- 6th-row -->          
+                                    <div class="row mb-3">
+                                        <div class="col-6 flex gap-3">
+                                            <div class="form-group">
+                                                <input type="checkbox" name="status" id="status">
+                                                <label for="status">Is Active</label>
+                                            </div>
+                                        
+                                            <div class="form-group">
+                                                <input type="radio" name="type" value="admin">
+                                                <label>Admin</label>
+                                            </div>
+                                            <div class="form-group">
+                                                <input type="radio" name="type" value="teacher">
+                                                <label>Tecaher</label>
+                                            </div>
+                                            <div class="form-group">
+                                                <input type="radio" name="type" value="user">
+                                                <label>User</label>
+                                            </div>
+                                        </div>
+                                        <div class="col-6">
+                                          <input type="number" placeholder="Amount" class="form-control" name="amount">
+                                        </div>
+                                    </div>
+
 
                                     <div class="row mb-3">
                                         <div class="col-12">
@@ -141,7 +147,7 @@ const users = `
                                         </div>
                                     </div>
 
-
+                                    <!-- 7th-row -->
                                     <div class="form-group mb-3">
                                         <button class="w-full btn bg-blue-600 text-white font-semibold">
                                             Submit
@@ -160,6 +166,5 @@ const users = `
             <!-- End of user Modal -->
 
             </div>
-
 `;
 export default users;

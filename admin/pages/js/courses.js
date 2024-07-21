@@ -1,4 +1,11 @@
-import { createOptionsFunc, formatDateFunc, getDataFunc, registerFunc } from "../../module/module.js";
+import { 
+    createOptionsFunc, 
+    formatDateFunc, 
+    getDataFunc, 
+    registerFunc, 
+    isConfirmFunc, 
+    updateDataFunc 
+} from "../../module/module.js";
 
 //global variable
 let courseEl = document.querySelector(".courses");
@@ -29,7 +36,24 @@ export const courseFunc = () =>{
     /* show category in select  */
     
     /* category is an array */
-    createOptionsFunc(category,courseCategoryEl)
+    createOptionsFunc(category,courseCategoryEl);
+
+    
+      // del coding
+
+  const  deleteFunc = ()=>{
+    let allDelBtn = courseList.querySelectorAll(".del-btn");
+    allDelBtn.forEach((btn,index)=>{
+        btn.onclick = async () =>{
+            let cnf = await isConfirmFunc();
+            if(cnf){
+                courses.splice(index,1);
+                updateDataFunc(courses,"courses");
+                readCourseFunc();
+            }
+        }
+    })
+  }
 
     /* /* /* read course coding */
   const readCourseFunc = () =>{
@@ -53,7 +77,8 @@ export const courseFunc = () =>{
                     </td>
                 </tr>
             `;
-        })
+        });
+        deleteFunc();
     }
     readCourseFunc();
 }
@@ -77,6 +102,22 @@ export const categoryFunc = () =>{
         }, 100);
         createOptionsFunc(category,courseCategoryEl)
         
+    };
+
+       // del coding
+
+    const  deleteFunc = ()=>{
+        let allDelBtn = categoryList.querySelectorAll(".del-btn");
+        allDelBtn.forEach((btn,index)=>{
+            btn.onclick = async () =>{
+                let cnf = await isConfirmFunc();
+                if(cnf){
+                    category.splice(index,1);
+                    updateDataFunc(category,"category");
+                    readCatFunc();
+                }
+            }
+        })
     }
 
     //read category coding
@@ -91,13 +132,14 @@ export const categoryFunc = () =>{
                     <td>${item.category}</td>
                     <td>${formatDateFunc(item.createdAt)}</td>
                     <td>
-                        <button class="btn text-blue-500"><i class="fa fa-edit"></i></button>
-                        <button class="btn text-red-500"><i class="fa fa-trash"></i></button>
+                        <button class="btn edit-btn text-blue-500"><i class="fa fa-edit"></i></button>
+                        <button class="btn del-btn text-red-500"><i class="fa fa-trash"></i></button>
                     </td>
                 </tr> 
             `;
 
-        })
+        });
+        deleteFunc();
     };
     readCatFunc();
 }

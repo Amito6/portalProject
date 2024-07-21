@@ -53,7 +53,7 @@ export const registerFunc = async (form,array,key) =>{
             tmp[props] = imgUrl;
         }
         else{
-            tmp[props] = value.trim();
+            tmp[props] = value.trim().toLowerCase();
         }
     }
     array.push(tmp);
@@ -61,6 +61,14 @@ export const registerFunc = async (form,array,key) =>{
     localStorage.setItem("data",JSON.stringify(data));
     form.reset("");
     swal("Data Inserted Successfully","successfully","success")
+}
+
+
+/* Update Coding */
+
+export const updateDataFunc = (array,key) =>{
+    data[key] = array;
+    localStorage.setItem("data",JSON.stringify(data));
 }
 
 /* Format date coding */
@@ -94,4 +102,28 @@ export const createOptionsFunc = (data,element) =>{
             <option value = "${item.category}">${item.category}</option
         `;
     })
+}
+
+//confimration coding
+
+export const isConfirmFunc = () => {
+    return new Promise((resolve,reject)=>{
+        swal({
+            title: "Are you sure?",
+            text: "Once deleted, you will not be able to recover this imaginary file!",
+            icon: "warning",
+            buttons: true,
+            dangerMode: true,
+          })
+          .then((willDelete) => {
+            if (willDelete) {
+                resolve(true);
+                swal("Poof! Your imaginary file has been deleted!", {
+                    icon: "success",
+                });
+            } else {
+              swal("Your imaginary file is safe!");
+            }
+          });
+    });
 }

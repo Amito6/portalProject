@@ -1,4 +1,4 @@
-import { getDataFunc, registerFunc, formatDateFunc} from "../../module/module.js";
+import { getDataFunc, registerFunc, formatDateFunc, isConfirmFunc, updateDataFunc} from "../../module/module.js";
 
 
 export const userFunc = () =>{
@@ -8,7 +8,11 @@ export const userFunc = () =>{
     let modal = userEl.querySelector("#user-modal")
     let btnClose = modal.querySelector(".btn-close")
     let userForm = userEl.querySelector(".users-form");
-    let userList = userEl.querySelector(".user-list")
+    let userList = userEl.querySelector(".user-list");
+    let addUserBtn = userEl.querySelector(".add-user-btn");
+    let allFormInput = userForm.querySelectorAll("input");
+    let allFormSelect = userForm.querySelector("textarea");
+    let textareaEl = userForm.querySelector("textarea");
 
     /* User register Coding */
     userForm.onsubmit = (e) =>{
@@ -20,30 +24,69 @@ export const userFunc = () =>{
         }, 100);
     }
 
+      // del coding
+
+  const  deleteFunc = ()=>{
+    let allDelBtn = userList.querySelectorAll(".del-btn");
+    allDelBtn.forEach((btn,index)=>{
+        btn.onclick = async () =>{
+            let cnf = await isConfirmFunc();
+            if(cnf){
+                users.splice(index,1);
+                updateDataFunc(users,"users");
+                readUserFunc();
+            }
+        }
+    })
+  }
+
+  //edit coding
+
+  const editFunc = () =>{
+    let allEditBtn = userList.querySelectorAll(".edit-btn");
+    allEditBtn.forEach((btn,index)=>{
+        btn.onclick = () =>{
+            addUserBtn.click();
+            let string = btn.getAttribute("data");
+            let data = JSON.parse(string);
+            allFormInput[1].value = data.name;
+            allFormInput[2].value = data.mobile;
+            allFormInput[3].value = data.email;
+            allFormInput[4].value = data.password;
+            allFormInput[5].value = data.fatherName ;
+            data.status ? allFormInput[6].checked = true : allFormInput[6]
+            data.type == 'admin' ? allFormInput[7].checked = true : allFormInput[7].checked = true;
+            data.type == 'teacher' ? allFormInput[7].checked = true : allFormInput[7].checked = true;
+
+        }
+    })
+
+  }
+
     /* Read USER Coding */
 
     const readUserFunc = () =>{
         userList.innerHTML = "";
         users.forEach((item,index)=>{
-            console.log(item)
+            let itemString = JSON.stringify(item);
             userList.innerHTML += `
                  <div class="p-4 bg-white shadow-sm">
 
 
                         <div class="flex justify-between items-center border-b py-3">
                             <div class="flex justify-center items-center gap-3">
-                                    <img src="${item.profile}" class="rounded-full w-11 h-11" alt="image">
+                                    <img src='${item.profile}' class="rounded-full w-11 h-11" alt="image">
                                     <div>
-                                        <h5 class="font-semibold">Amit</h5>
+                                        <h5 class="font-semibold">${item.name}</h5>
                                         <p class="text-sm text-gray-500"><i class="fa fa-location"></i>${item.address}</p>
                                     </div>
                             </div>
                             <div class="dropdown dropstart" >
                                 <button data-bs-toggle="dropdown" class="btn bg-gray-100 w-11 h-11 rounded-full flex justify-center items-center"><i class="fa solid fa-ellipsis-vertical"></i></button>
                                 <div class="dropdown-menu">
-                                    <button class="flex items-center justify-between dropdown-item text-blue-600"><i class="fa fa-edit"></i></button>
+                                    <button data = "${itemString}" class="flex edit-btn items-center justify-between dropdown-item text-blue-600"><i class="fa fa-edit"></i></button>
                                     <hr class="dropdown-divider">
-                                    <button class="flex items-center justify-between dropdown-item text-red-600"><i class="fa fa-trash"></i></button>
+                                    <button class="flex del-btn items-center justify-between dropdown-item text-red-600"><i class="fa fa-trash"></i></button>
                                 </div>
                             </div>
                         </div>
@@ -57,7 +100,7 @@ export const userFunc = () =>{
                                 <h5>Payment</h5>
                             </div>
                             <div class="p-2">
-                                <h5 class="text-gray-500 font-semibold">12000</h5>
+                                <h5 class="text-gray-500 font-semibold">${item.amount}</h5>
                             </div>
                         </div>
 
@@ -112,10 +155,10 @@ export const userFunc = () =>{
                                     <i class="fa-regular fa-envelope"></i>
                                 </button>
                                 <div class="border-b m-0"></div>
-                                <button class="btn bg-red-50 text-red-600 rounded-full">
+                                <button class="btn bg-red-50 ${item.status ? "d-none" : ""} text-red-600 rounded-full">
                                     <i class="fa-solid fa-ban"></i>
                                 </button>
-                                <button class="btn bg-red-50 text-red-600 rounded-full">
+                                <button class="btn bg-red-50 ${item.status ? "" : "d-none"} text-red-600 rounded-full">
                                     <i class="fa-solid fa-check"></i>
                                 </button>
                             </div>
@@ -125,8 +168,12 @@ export const userFunc = () =>{
 
                     </div>
             `;
-        })
+        });
+        deleteFunc();
+        editFunc();
     }
 
     readUserFunc();
+
+  
 }
