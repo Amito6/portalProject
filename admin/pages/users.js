@@ -1,5 +1,5 @@
 const users = `
-             <div class="users">
+                 <div class="users">
                 <!-- Page content -->
                 <div class="animate__animated animate__zoomIn user-list grid md:grid-cols-3 gap-4">
                     <!-- 1st div -->
@@ -68,7 +68,12 @@ const users = `
                                         <div class="col-6">
                                             <div class="form-group">
                                                 <label for="password">Password <sup class="text-red-500">*</sup></label>
-                                                <input type="password" name="password" id="password" required  placeholder="Password" class="form-control">
+                                                <div class="input-group">
+                                                    <input type="password" name="password" id="password" required  placeholder="Password" class="form-control">
+                                                    <span style="cursor: pointer;" type="button" class="input-group-text toggle-password-btn">
+                                                        <i class="fa fa-eye-slash"></i>
+                                                    </span>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
@@ -78,7 +83,7 @@ const users = `
                                         <div class="col-6">
                                             <div class="form-group">
                                                 <label for="father">Fathers Name<sup class="text-red-500">*</sup></label>
-                                                <input type="text" name="fathers-name" id="father" required class="form-control">
+                                                <input type="text" name="fathersName" id="father" required class="form-control">
                                             </div>
                                         </div>
                                         <div class="col-6">
@@ -149,10 +154,10 @@ const users = `
 
                                     <!-- 7th-row -->
                                     <div class="form-group mb-3">
-                                        <button class="w-full btn bg-blue-600 text-white font-semibold">
+                                        <button type="submit" class="w-full btn bg-blue-600 text-white font-semibold">
                                             Submit
                                         </button>
-                                        <button class="w-full btn bg-red-400 text-white font-semibold d-none">
+                                        <button type="button" class="w-full btn bg-red-400 text-white font-semibold d-none">
                                             Update
                                         </button>
                                     </div>
@@ -164,6 +169,8 @@ const users = `
 
                 </div>
             <!-- End of user Modal -->
+
+            
 
             </div>
 `;

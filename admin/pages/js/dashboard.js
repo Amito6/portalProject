@@ -1,3 +1,6 @@
+import { getDataFunc,formatDateFunc } from "../../module/module.js";
+
+
 var options = {
     series: [{
     name: 'series1',
@@ -83,11 +86,105 @@ var options = {
 
 
 export const dashboardFunc = () =>{
-    let areaChart = document.querySelector(".area-chart");
-    let areaColoumnChart = document.querySelector(".area-column-chart");
+  //global variable
+    let data = getDataFunc();
+    let users = data ? data.users ? data.users : [] : [];
+    let courses = data ? data.courses ? data.courses : [] : [];
+    let recentStudents = users.slice(0,5);
+    let recentCourses = users.slice(0,5);
+    let dashboardEl = document.querySelector(".dashboard");
+    let areaChart = dashboardEl.querySelector(".area-chart");
+    let areaColoumnChart = dashboardEl.querySelector(".area-column-chart");
+    let recentStudentsEl = dashboardEl.querySelector(".recent-student");
+    let recentCoursesEl = dashboardEl.querySelector(".recent-courses")
+   
+   
+   /* Create chart coding */
     var chart = new ApexCharts(areaChart, options);
     chart.render();
     var chartColumn = new ApexCharts(areaColoumnChart,optionsColumnChart);
     chartColumn.render();
+
+    /* recent students */
+    recentStudents.forEach((item,index)=>{
+      recentStudentsEl.innerHTML += `
+      <div class="recent-student">
+        <div class="grid grid-cols-4 gap-2 border-b p-2">
+        <img src="${item.profile}" class="w-8 h-8 rounded-full " alt="">
+        <div class="col-span-2">
+            <h5 class="mb-1">${item.name}</h5>
+            <p class="text-sm text-gray-400">${formatDateFunc(item.createdAt)}</p>
+        </div>
+        <div>
+            ${
+              item.status ? 
+              `
+              <button class="btn bg-green-600 text-white rounded-full w-9 h-9 flex items-center justify-content-center">
+              <i class="fa-regular fa-circle-xmark"></i>
+              </button>
+              ` : 
+              `
+              <button class="btn bg-red-600 text-white rounded-full w-9 h-9 flex items-center justify-content-center">
+              <i class="fa-regular fa-circle-xmark"></i>
+              </button>
+              
+              `
+
+            }
+        </div>
+    </div>`
+    })
+
+    /* recent courses coding */
+
+    recentCourses.forEach((item,index)=>{
+      recentCoursesEl.innerHTML += `
+      <div class="recent-student">
+        <div class="grid grid-cols-4 gap-2 border-b p-2">
+        <img src="${item.profile}" class="w-8 h-8 rounded-full " alt="">
+        <div class="col-span-2">
+            <h5 class="mb-1">${item.name}</h5>
+            <p class="text-sm text-gray-400">${formatDateFunc(item.createdAt)}</p>
+        </div>
+        <div>
+            ${
+              item.status ? 
+              `
+              <button class="btn bg-green-600 text-white rounded-full w-9 h-9 flex items-center justify-content-center">
+              <i class="fa-regular fa-circle-xmark"></i>
+              </button>
+              ` : 
+              `
+              <button class="btn bg-red-600 text-white rounded-full w-9 h-9 flex items-center justify-content-center">
+              <i class="fa-regular fa-circle-xmark"></i>
+              </button>
+              
+              `
+
+            }
+        </div>
+    </div>`
+    })
     
 }
+
+
+`
+ 
+    
+`;
+
+
+`
+<div class="grid grid-cols-4 gap-2 border-b p-2">
+    <img src="../assets/images/hotelLogo.jpg" class="w-8 h-8 rounded-full " alt="">
+    <div class="col-span-2">
+        <h5 class="mb-1">Alok kumar</h5>
+        <p class="text-sm text-gray-400">24-0901993</p>
+    </div>
+    <div>
+        <button class="btn bg-red-600 text-white rounded-full w-9 h-9 flex items-center justify-content-center"><i class="fa-regular fa-circle-xmark"></i></button>
+    </div>
+</div>
+
+`

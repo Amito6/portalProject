@@ -13,10 +13,12 @@ export const getDataFunc = () =>{
 
 /* Image Handling*/
 
-export const processImage = (img) =>{
+export const processImage = (img,array,index) =>{
 
     /* jo image aa rha hai usko base 64 mein convert krna hai,, jab bho [hoto aaye, tabhi name check karenge */
+   let data = array[index];
     return new Promise((resolve,reject)=>{
+      if(index == undefined){
         if(img.name){
             let url = "";
             let freader = new FileReader();
@@ -30,12 +32,29 @@ export const processImage = (img) =>{
         else{
             resolve("../../assets/images/hotelImage.jpg")
         }
+      }
+      else{
+        if(img.name){
+            let url = "";
+            let freader = new FileReader();
+            freader.readAsDataURL(img);
+            freader.onload = (e)=>{
+                /* ab url ko return krna hai save krne k liye local storage mein but ye khud ek function hai to return ni kr payega so variable ko iss data evenet ko callback se bahr define karo */
+                url = e.target.result;
+                resolve(url);
+            }
+        }   
+        else{
+            resolve(data.profile)
+        }
+       
+      }
     })
 }
 
 /* Register coding */
 
-export const registerFunc = async (form,array,key) =>{
+export const registerFunc = async (form,array,key,index,readDataFunc) =>{
     let formData = new FormData(form);
     let courses = [];
     let tmp = {
@@ -44,7 +63,7 @@ export const registerFunc = async (form,array,key) =>{
     for(let data of formData.entries()){
         let props = data[0];
         let value = data[1];
-        let imgUrl = typeof(value) == 'object' && await processImage(value);
+        let imgUrl = typeof(value) == 'object' && await processImage(value,array,index);
         props == 'course' && courses.push(value);
         if(props == "course"){
             tmp[props] = courses;
@@ -56,11 +75,21 @@ export const registerFunc = async (form,array,key) =>{
             tmp[props] = value.trim().toLowerCase();
         }
     }
-    array.push(tmp);
-    data[key] = array;
-    localStorage.setItem("data",JSON.stringify(data));
-    form.reset("");
-    swal("Data Inserted Successfully","successfully","success")
+    if(index == undefined){
+        array.push(tmp);
+        data[key] = array;
+        localStorage.setItem("data",JSON.stringify(data));
+        form.reset("");
+        swal("Data Updated Successfully","successfully","success")
+    }
+    else{
+        array[index] = tmp;
+        data[key] = array;
+        localStorage.setItem("data",JSON.stringify(data));
+        form.reset("");
+        swal("Data Updated","successfully","success");
+        readDataFunc(array); 
+    } 
 }
 
 
@@ -93,13 +122,11 @@ export const formatDateFunc = (dateData,isTimeReceived) =>{
 
 } */
 
-export const createOptionsFunc = (data,element) =>{
-    console.log(data,element);
+export const createOptionsFunc = (data,element,key) =>{
     element.innerHTML = `<option value = "choose category">Choose Category</option>`;
     data.forEach((item,index)=>{
-        console.log(item)
         element.innerHTML += `
-            <option value = "${item.category}">${item.category}</option
+            <option value = "${item[key]}">${item[key]}</option
         `;
     })
 }
